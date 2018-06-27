@@ -21,8 +21,8 @@ call_user_func(
         $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\Dispatcher');
 
         $signalSlotDispatcher->connect(
-            'FluidTYPO3\Vhs\Service\AssetService',
-            'minifyAssets',
+            \FluidTYPO3\Vhs\Service\AssetService::class,
+            \FluidTYPO3\Vhs\Service\AssetService::MINIFY_SIGNAL,
             'RZ\Vhsminify\Hooks\Minify',
             'minifyAssets',
             false
