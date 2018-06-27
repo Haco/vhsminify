@@ -1,5 +1,5 @@
 <?php
-namespace RZ\Vhsminify\Hooks;
+namespace RZ\Vhsminify\Slot;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -25,8 +25,10 @@ class Minify
     /**
      * @param string $file
      * @param string $contents
+     *
+     * @return string
      */
-    public function minifyAssets($file, &$contents)
+    public function minifyAssets(&$file, &$contents)
     {
         $type = pathinfo($file, PATHINFO_EXTENSION);
         $type = strtoupper($type);

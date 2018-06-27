@@ -1,5 +1,11 @@
 # vhsminify
 
+## Information
+
+This extension will **only** work, when vhs has implemented the signal.
+
+[https://github.com/FluidTYPO3/vhs/pull/1497](https://github.com/FluidTYPO3/vhs/pull/1497)
+
 ## Install
 
 Simply install the extension alongside `vhs` and set the following in TypoScript setup:
