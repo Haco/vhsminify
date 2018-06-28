@@ -19,7 +19,7 @@ namespace RZ\Vhsminify\Slot;
  *
  * @author Raphael Zschorsch <rafu1987@gmail.com>
  */
-class Minify
+class MinifySlot
 {
 
     /**
@@ -43,5 +43,7 @@ class Minify
 
             $contents = $minifier->minify();
         }
+
+        // return [$file, $contents];
     }
 }
