@@ -43,7 +43,5 @@ class MinifySlot
 
             $contents = $minifier->minify();
         }
-
-        // return [$file, $contents];
     }
 }
