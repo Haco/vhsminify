@@ -20,13 +20,23 @@ call_user_func(
         /** @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher $signalSlotDispatcher */
         $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\Dispatcher');
 
-        $signalSlotDispatcher->connect(
-            \FluidTYPO3\Vhs\Service\AssetService::class,
-            \FluidTYPO3\Vhs\Service\AssetService::ASSET_SIGNAL,
-            \RZ\Vhsminify\Slot\MinifySlot::class,
-            'minifyAssets',
-            false
-        );
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('razor')) {
+            $signalSlotDispatcher->connect(
+                \RZ\Razor\Service\AssetService::class,
+                \RZ\Razor\Service\AssetService::ASSET_SIGNAL,
+                \RZ\Vhsminify\Slot\MinifySlot::class,
+                'minifyAssets',
+                false
+            );
+        } else if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('vhs')) {
+            $signalSlotDispatcher->connect(
+                \FluidTYPO3\Vhs\Service\AssetService::class,
+                \FluidTYPO3\Vhs\Service\AssetService::ASSET_SIGNAL,
+                \RZ\Vhsminify\Slot\MinifySlot::class,
+                'minifyAssets',
+                false
+            );
+        }
     },
     $_EXTKEY
 );
