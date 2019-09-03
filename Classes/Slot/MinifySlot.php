@@ -38,10 +38,11 @@ class MinifySlot
 
             $minifierClassName = '\\MatthiasMullie\\Minify\\' . $type;
 
-            $minifier = new $minifierClassName();
-            $minifier->add($contents);
-
-            $contents = $minifier->minify();
+            if (class_exists($minifierClassName)) {
+                $minifier = new $minifierClassName();
+                $minifier->add($contents);
+                $contents = $minifier->minify();
+            }
         }
     }
 }
